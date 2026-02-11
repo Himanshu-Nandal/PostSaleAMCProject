@@ -8,8 +8,8 @@ import org.springframework.data.neo4j.core.schema.TargetNode;
 
 @RelationshipProperties
 public class OF_PRODUCT {
-    @Id @GeneratedValue
-    private Long ofproductId;
+//    @Id @GeneratedValue
+//    private Long ofproductId;
 
     @TargetNode
     private Product product;

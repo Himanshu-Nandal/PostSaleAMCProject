@@ -1,7 +1,9 @@
 package com.postSale.amcProject.Repositories;
 
-import com.postSale.amcProject.Model.nodes.Customers;
+import com.postSale.amcProject.Model.nodes.Customer;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
+import org.springframework.stereotype.Repository;
 
-public interface CustomerRepository extends Neo4jRepository<Customers, Long> {
+@Repository
+public interface CustomerRepository extends Neo4jRepository<Customer, Long> {
 }

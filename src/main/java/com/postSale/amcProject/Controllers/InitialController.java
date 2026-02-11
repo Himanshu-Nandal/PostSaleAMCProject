@@ -1,8 +1,8 @@
 package com.postSale.amcProject.Controllers;
 
-import com.postSale.amcProject.Model.nodes.Customers;
+import com.postSale.amcProject.Model.nodes.Customer;
 import com.postSale.amcProject.Model.nodes.Product;
-import com.postSale.amcProject.Model.nodes.Sales;
+import com.postSale.amcProject.Model.nodes.Sale;
 import com.postSale.amcProject.Services.InitialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -21,12 +21,12 @@ public class InitialController {
 
     // POST REQS
     @PostMapping("/customers")
-    public Customers createCustomer(@RequestBody Customers customer) {
+    public Customer createCustomer(@RequestBody Customer customer) {
         return initialService.createCust(customer);
     }
 
     @PostMapping("/sales")
-    public Sales createSales(@RequestBody Sales sales) {
+    public Sale createSales(@RequestBody Sale sales) {
         return initialService.createSale(sales);
         // Also create warranty schedule
     }
@@ -34,8 +34,8 @@ public class InitialController {
 
     // PUT REQS
     @PutMapping("/customers/")
-    public ResponseEntity<Customers> updateCustomer(@RequestBody Customers customers){
-        Customers updatedCustomer = initialService.updateCus(customers);
+    public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customers){
+        Customer updatedCustomer = initialService.updateCus(customers);
         return ResponseEntity.ok(updatedCustomer);
     }
 
@@ -48,13 +48,13 @@ public class InitialController {
 
     // GET REQS
     @GetMapping("/customers/")
-    public List<Customers> getAllCustomers(){
+    public List<Customer> getAllCustomers(){
         return initialService.getAllCustomers();
     }
 
     @GetMapping("/customers/{id}")
-    public ResponseEntity<Customers> getCustomers(@PathVariable Long id){
-        Customers customer = initialService.getCustomerById(id).get();
+    public ResponseEntity<Customer> getCustomers(@PathVariable Long id){
+        Customer customer = initialService.getCustomerById(id).get();
         if (customer == null)
             return ResponseEntity.notFound().build();
         return ResponseEntity.ok(customer);
@@ -74,14 +74,14 @@ public class InitialController {
     }
 
     @GetMapping("/sales/")
-    public List<Sales> getAllSalesOfCust(Customers customers){
+    public List<Sale> getAllSalesOfCust(Customer customers){
         return initialService.getAllSalesOfCustomer(customers);
     }
 
 
     // DELETE REQS
     @DeleteMapping("/customers/{id}")
-    public ResponseEntity<Customers> deleteCustomer(@PathVariable Long id) {
+    public ResponseEntity<Customer> deleteCustomer(@PathVariable Long id) {
         boolean deletedCustomer = initialService.deleteCustomer(id);
         if(!deletedCustomer)
             return ResponseEntity.notFound().build();

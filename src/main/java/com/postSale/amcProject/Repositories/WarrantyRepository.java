@@ -10,11 +10,19 @@ import java.util.List;
 @Repository
 public interface WarrantyRepository extends Neo4jRepository<Warranty, Long> {
 
-//    @Query("""
-//    MATCH (w:Warranty)
-//    WHERE w.endDate <= date() + duration('P30D')
-//    RETURN w
-//    """)
-//    List<Warranty> findWarrantiesExpiringSoon();
+    @Query("""
+    MATCH (w:Warranty)
+    WHERE w.warrantyEndDate <= date() + duration('P30D')
+    RETURN w
+    """)
+    List<Warranty> findWarrantiesExpiringSoon();
+
+    @Query("""
+    MATCH (c:Customer)-[:PURCHASED]->(s:Sale)-[:HAS_WARRANTY]->(w:Warranty)
+    WHERE id(c) = $custId
+    RETURN w
+    """)
+    List<Warranty> findWarrantiesByCustomerId(Long custId);
+
 }
 

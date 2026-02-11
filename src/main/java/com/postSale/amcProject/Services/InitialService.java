@@ -1,8 +1,8 @@
 package com.postSale.amcProject.Services;
 
-import com.postSale.amcProject.Model.nodes.Customers;
+import com.postSale.amcProject.Model.nodes.Customer;
 import com.postSale.amcProject.Model.nodes.Product;
-import com.postSale.amcProject.Model.nodes.Sales;
+import com.postSale.amcProject.Model.nodes.Sale;
 import com.postSale.amcProject.Repositories.CustomerRepository;
 import com.postSale.amcProject.Repositories.ProductRepository;
 import com.postSale.amcProject.Repositories.SaleRepository;
@@ -13,35 +13,35 @@ import java.util.Optional;
 
 public class InitialService {
     @Autowired
-    CustomerRepository customerRepository;
+    private CustomerRepository customerRepository;
 //    public InitialService(CustomerRepository customerRepository) {
 //        this.customerRepository = customerRepository;
 //    }
 
     @Autowired
-    SaleRepository saleRepository;
+    private SaleRepository saleRepository;
 
     @Autowired
-    ProductRepository productRepository;
+    private ProductRepository productRepository;
 
     // CUSTOMER SERVICES
-    public Customers createCust(Customers customer) {
+    public Customer createCust(Customer customer) {
         return customerRepository.save(customer);
     }
 
-    public Customers updateCus(Customers customers) {
-        if(!customerRepository.existsById(customers.getCustid())){
+    public Customer updateCus(Customer customers) {
+        if(!customerRepository.existsById(customers.getCustId())){
             throw new IllegalArgumentException("User with Name: " + customers.getCustName() + " doesn't exist"); // generic exception
         }
         customerRepository.save(customers);
         return customers;
     }
 
-    public List<Customers> getAllCustomers() {
+    public List<Customer> getAllCustomers() {
         return customerRepository.findAll();
     }
 
-    public Optional<Customers> getCustomerById(Long id) {
+    public Optional<Customer> getCustomerById(Long id) {
         return customerRepository.findById(id);
     }
 
@@ -79,11 +79,11 @@ public class InitialService {
     }
 
     // SALES SERVICES
-    public Sales createSale(Sales sales) {
+    public Sale createSale(Sale sales) {
         return saleRepository.save(sales);
     }
 
-    public List<Sales> getAllSalesOfCustomer(Customers customers) {
-        return saleRepository.findById(customers.getCustid());
+    public List<Sale> getAllSalesOfCustomer(Customer customers) {
+        return saleRepository.findById(customers.getCustId());
     }
 }

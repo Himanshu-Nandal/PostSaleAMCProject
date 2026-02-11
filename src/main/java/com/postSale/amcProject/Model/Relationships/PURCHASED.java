@@ -1,22 +1,22 @@
 package com.postSale.amcProject.Model.Relationships;
 
-import com.postSale.amcProject.Model.nodes.Sales;
+import com.postSale.amcProject.Model.nodes.Sale;
 import org.springframework.data.neo4j.core.schema.*;
 
 @RelationshipProperties
 public class PURCHASED {
-    @Id @GeneratedValue
-    @Property
-    private Long purchaseId;
+//    @Id @GeneratedValue
+//    @Property
+//    private Long purchaseId;
 
     @TargetNode
-    private Sales sale;
+    private Sale sale;
 
-    public Sales getSale() {
+    public Sale getSale() {
         return sale;
     }
 
-    public void setSale(Sales sale) {
+    public void setSale(Sale sale) {
         this.sale = sale;
     }
 }

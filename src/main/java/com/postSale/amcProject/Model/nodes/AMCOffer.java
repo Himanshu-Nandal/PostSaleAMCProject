@@ -1,52 +1,24 @@
 package com.postSale.amcProject.Model.nodes;
 
+import lombok.Getter;
+import lombok.Setter;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.Node;
 
+@Getter
 @Node
 public class AMCOffer {
-    @Id
-    @GeneratedValue
+    @Id @GeneratedValue
     private Long offerId;
+    @Setter
     private String offerType; // Silver / Gold
+    @Setter
     private Integer offerDurationMonths;
+    @Setter
     private Double offerPrice;
+    @Setter
     private String offerTerms;
 
-    public Long getOfferId() {
-        return offerId;
-    }
 
-    public String getOfferType() {
-        return offerType;
-    }
-
-    public void setOfferType(String offerType) {
-        this.offerType = offerType;
-    }
-
-    public Integer getOfferDurationMonths() {
-        return offerDurationMonths;
-    }
-
-    public void setOfferDurationMonths(Integer offerDurationMonths) {
-        this.offerDurationMonths = offerDurationMonths;
-    }
-
-    public Double getOfferPrice() {
-        return offerPrice;
-    }
-
-    public void setOfferPrice(Double offerPrice) {
-        this.offerPrice = offerPrice;
-    }
-
-    public String getOfferTerms() {
-        return offerTerms;
-    }
-
-    public void setOfferTerms(String offerTerms) {
-        this.offerTerms = offerTerms;
-    }
 }

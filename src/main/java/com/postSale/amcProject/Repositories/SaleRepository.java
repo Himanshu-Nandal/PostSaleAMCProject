@@ -1,7 +1,19 @@
 package com.postSale.amcProject.Repositories;
 
-import com.postSale.amcProject.Model.nodes.Sales;
+import com.postSale.amcProject.Model.nodes.Sale;
 import org.springframework.data.neo4j.repository.Neo4jRepository;
+import org.springframework.data.neo4j.repository.query.Query;
+import org.springframework.stereotype.Repository;
 
-public interface SaleRepository extends Neo4jRepository<Sales, Long> {
+import java.util.List;
+
+@Repository
+public interface SaleRepository extends Neo4jRepository<Sale, Long> {
+
+    @Query("""
+    MATCH (c:Customer)-[:PURCHASED]->(s:Sale)
+    WHERE id(c) = $customerId
+    RETURN s
+    """)
+    List<Sale> findAllSalesByCustomerId(Long customerId);
 }
