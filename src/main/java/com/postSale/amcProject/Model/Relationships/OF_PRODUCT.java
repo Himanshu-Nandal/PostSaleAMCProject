@@ -1,26 +1,24 @@
 package com.postSale.amcProject.Model.Relationships;
 
 import com.postSale.amcProject.Model.nodes.Product;
-import com.postSale.amcProject.Model.nodes.Warranty;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
 import org.springframework.data.neo4j.core.schema.Id;
 import org.springframework.data.neo4j.core.schema.RelationshipProperties;
 import org.springframework.data.neo4j.core.schema.TargetNode;
 
 @RelationshipProperties
-public class HAS_WARRANTY {
-    @Id
-    @GeneratedValue
-    private Long hasWarrantyId;
+public class OF_PRODUCT {
+    @Id @GeneratedValue
+    private Long ofproductId;
 
     @TargetNode
-    private Warranty warranty;
+    private Product product;
 
-    public Warranty getWarranty() {
-        return warranty;
+    public Product getProduct() {
+        return product;
     }
 
-    public void setWarranty(Warranty warranty) {
-        this.warranty = warranty;
+    public void setProduct(Product product) {
+        this.product = product;
     }
 }

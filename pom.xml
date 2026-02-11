@@ -9,9 +9,9 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.postSale</groupId>
-	<artifactId>amcProject</artifactId>
+	<artifactId>PSPLProject</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>amcProject</name>
+	<name>PSPLProject</name>
 	<description>Demo project for Post Sale Product life and AMC</description>
 	<url/>
 	<licenses>
