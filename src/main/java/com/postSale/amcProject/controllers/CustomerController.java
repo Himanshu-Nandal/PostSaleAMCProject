@@ -4,7 +4,6 @@ import com.postSale.amcProject.Model.nodes.Customer;
 import com.postSale.amcProject.Services.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -21,18 +20,18 @@ public class CustomerController {
         this.customerService = customerService;
     }
 
-    @PostMapping("/")
+    @PostMapping
     public Customer createCustomer(@RequestBody Customer customer) {
         return customerService.createCust(customer);
     }
 
-    @PutMapping("/")
+    @PutMapping
     public ResponseEntity<Customer> updateCustomer(@RequestBody Customer customers){
         Customer updatedCustomer = customerService.updateCus(customers);
         return ResponseEntity.ok(updatedCustomer);
     }
 
-    @GetMapping("/")
+    @GetMapping
     public List<Customer> getAllCustomers(){
         return customerService.getAllCustomers();
     }
