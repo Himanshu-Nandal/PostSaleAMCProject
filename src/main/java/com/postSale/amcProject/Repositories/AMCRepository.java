@@ -5,5 +5,5 @@ import org.springframework.data.neo4j.repository.Neo4jRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface AMCRepository extends Neo4jRepository<AMC, Long> {
+public interface AMCRepository extends Neo4jRepository<AMC, String> {
 }

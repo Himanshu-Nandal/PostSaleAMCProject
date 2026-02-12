@@ -8,12 +8,12 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface SaleRepository extends Neo4jRepository<Sale, Long> {
+public interface SaleRepository extends Neo4jRepository<Sale, String> {
 
     @Query("""
     MATCH (c:Customer)-[:PURCHASED]->(s:Sale)
     WHERE id(c) = $customerId
     RETURN s
     """)
-    List<Sale> findAllSalesByCustomerId(Long customerId);
+    List<Sale> findAllSalesByCustomerId(String customerId);
 }

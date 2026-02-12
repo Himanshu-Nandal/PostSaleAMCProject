@@ -1,6 +1,6 @@
 package com.postSale.amcProject.Model.nodes;
 
-import com.postSale.amcProject.Model.Relationships.HAS_WARRANTY;
+//import com.postSale.amcProject.Model.Relationships.HAS_WARRANTY;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.neo4j.core.schema.GeneratedValue;
@@ -12,18 +12,30 @@ import java.util.List;
 
 @Node
 public class Product {
-    @Getter
     @Id
     @GeneratedValue
-    private Long productId;
-    @Setter
-    @Getter
+    private String productId;
     private String productName;
-    @Setter
-    @Getter
+    @GeneratedValue
     private String productSerialNumber;
 
+    public String getProductId() {
+        return productId;
+    }
+
+    public String getProductName() {
+        return productName;
+    }
+
+    public void setProductName(String productName) {
+        this.productName = productName;
+    }
+
+    public String getProductSerialNumber() {
+        return productSerialNumber;
+    }
+
     @Relationship(type = "OF_PRODUCT", direction = Relationship.Direction.OUTGOING)
-    private List<HAS_WARRANTY> warrantyList;
+    private List<Warranty> warrantyList;
 }
 
